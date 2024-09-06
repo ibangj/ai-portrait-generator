@@ -1,0 +1,313 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 964251501604,
+      "steps": 8,
+      "cfg": 2,
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "23",
+        0
+      ],
+      "negative": [
+        "23",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "dreamshaperXL_turboDpmppSDE.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1152,
+      "height": 1152,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "29",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "nipple, anime, cartoon, boobs cleavage, nude, inappropriate, taboo, disabled body, (6 fingers), (3 hands), dark, sexy, sensual, erotic, armpit, naked, exposed leg, thighs, ((shorts)), ((skirt)), indian, india, african - american",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "10": {
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "image": "Camo Snapshot 2024-04-17 - 20-16-26.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "low_threshold": 0.01,
+      "high_threshold": 0.3,
+      "image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "Canny",
+    "_meta": {
+      "title": "Canny"
+    }
+  },
+  "16": {
+    "inputs": {
+      "control_net_name": "control-lora-canny-rank128.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "20": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "23": {
+    "inputs": {
+      "strength": 0.5,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "control_net": [
+        "16",
+        0
+      ],
+      "image": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "24": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "YOLOv5n",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 1,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0,1,2,3",
+      "source_faces_index": "0,1,2,3",
+      "console_log_level": 1,
+      "input_image": [
+        "8",
+        0
+      ],
+      "source_image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "25": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text_1": "male vocalists of an indie pop psychadelic band",
+      "weight_1": 1,
+      "text_2": "performing a concert",
+      "weight_2": 1,
+      "text_3": "on a beach",
+      "weight_3": 1,
+      "text_4": "highly detailed face",
+      "weight_4": 1.02,
+      "text_5": "bright",
+      "weight_5": 1,
+      "text_6": "guitar and drum background",
+      "weight_6": 1.06,
+      "text_7": "",
+      "weight_7": 1,
+      "text_8": "",
+      "weight_8": 1,
+      "text_9": "",
+      "weight_9": 1,
+      "text_10": "",
+      "weight_10": 1,
+      "active": true
+    },
+    "class_type": "promptComposerTextMultiple",
+    "_meta": {
+      "title": "Prompt Composer Multiple Text"
+    }
+  },
+  "30": {
+    "inputs": {},
+    "class_type": "PromptComposerMerge",
+    "_meta": {
+      "title": "Prompt Composer Merge"
+    }
+  },
+  "36": {
+    "inputs": {
+      "instantid_file": null
+    },
+    "class_type": "InstantIDModelLoader",
+    "_meta": {
+      "title": "Load InstantID Model"
+    }
+  },
+  "37": {
+    "inputs": {
+      "align_x": "start",
+      "align_y": "start",
+      "x": 0,
+      "y": 0,
+      "scale": 1,
+      "image": [
+        "24",
+        0
+      ],
+      "overlay": [
+        "38",
+        0
+      ],
+      "overlay_mask": [
+        "38",
+        1
+      ]
+    },
+    "class_type": "Runtime44ImageOverlay",
+    "_meta": {
+      "title": "Runtime44 Image Overlay"
+    }
+  },
+  "38": {
+    "inputs": {
+      "image": "sample_frame.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "39": {
+    "inputs": {
+      "images": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  }
+}

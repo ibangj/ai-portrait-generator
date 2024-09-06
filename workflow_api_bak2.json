@@ -1,0 +1,281 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 995051431647868,
+      "steps": 30,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m_sde_gpu",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "23",
+        0
+      ],
+      "negative": [
+        "23",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "dreamshaper_8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1152,
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "28",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "BadDream, teeth, UnrealisticDream, nipple, boobs cleavage, nude, inappropriate, taboo, disabled body, (6 fingers), (3 hands), dark, sexy, sensual, erotic, armpit, naked, exposed leg, thighs, ((shorts)), ((skirt)), indian, india, african - american",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "10": {
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "image": "WhatsApp Image 2024-07-04 at 13.10.45_80c4b3c4 (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "low_threshold": 0.01,
+      "high_threshold": 0.3,
+      "image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "Canny",
+    "_meta": {
+      "title": "Canny"
+    }
+  },
+  "16": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_canny (1).pth"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "20": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "23": {
+    "inputs": {
+      "strength": 0.8,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "control_net": [
+        "16",
+        0
+      ],
+      "image": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "24": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "YOLOv5n",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 1,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0,1,2,3",
+      "source_faces_index": "0,1,2,3",
+      "console_log_level": 1,
+      "input_image": [
+        "8",
+        0
+      ],
+      "source_image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "25": {
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "28": {
+    "inputs": {
+      "text": "(chef)",
+      "weight": 1,
+      "active": true,
+      "text_in_opt": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "PromptComposerTextSingle",
+    "_meta": {
+      "title": "Prompt Composer Single Text"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text_1": "men",
+      "weight_1": 1,
+      "text_2": "strong",
+      "weight_2": 1,
+      "text_3": "colorful",
+      "weight_3": 1,
+      "text_4": "kitchen background",
+      "weight_4": 0.55,
+      "text_5": "detailed face",
+      "weight_5": 1,
+      "text_6": "",
+      "weight_6": 1,
+      "text_7": "",
+      "weight_7": 1,
+      "text_8": "",
+      "weight_8": 1,
+      "text_9": "",
+      "weight_9": 1,
+      "text_10": "",
+      "weight_10": 1,
+      "active": true
+    },
+    "class_type": "promptComposerTextMultiple",
+    "_meta": {
+      "title": "Prompt Composer Multiple Text"
+    }
+  },
+  "30": {
+    "inputs": {},
+    "class_type": "PromptComposerMerge",
+    "_meta": {
+      "title": "Prompt Composer Merge"
+    }
+  },
+  "31": {
+    "inputs": {
+      "resolution": 512
+    },
+    "class_type": "Zoe-DepthMapPreprocessor",
+    "_meta": {
+      "title": "Zoe Depth Map"
+    }
+  }
+}

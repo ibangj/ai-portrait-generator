@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portrait Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Portrait Generator</h1>
+
+        <form id="userInfoForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Female Hijabi">Female Wearing Hijab</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position:</label>
+                <select id="position" name="position" required>
+                    <option value="">Select Position</option>
+                    <option value="Vocalist">Vocalist</option>
+                    <option value="Guitarist">Guitarist</option>
+                    <option value="Bassist">Bassist</option>
+                    <option value="Drummer">Drummer</option>
+                    <option value="Keyboardist">Keyboardist</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="setPanggung">Venue:</label>
+                <select id="setPanggung" name="setPanggung" required>
+                    <option value="">Select Venue</option>
+                    <option value="Concert Hall">Concert Hall</option>
+                    <option value="Outdoor Stage">Outdoor Stage</option>
+                    <option value="Club">Club</option>
+                    <option value="Arena">Arena</option>
+                    <option value="Music Studio">Studio</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="expression">Expression:</label>
+                <select id="expression" name="expression" required>
+                    <option value="">Select Expression</option>
+                    <option value="Cool">Cool</option>
+                    <option value="Passionate">Passionate</option>
+                    <option value="Emotional">Emotional</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Band Genre:</label>
+                <input type="text" id="genre" name="genre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Frame:</label>
+                <div class="frame-selection">
+                    <label class="frame-option">
+                        <input type="radio" name="frame" value="frame_1">
+                        <img src="./images/frame_1.png" alt="Frame 1">
+                    </label>
+                    <label class="frame-option">
+                        <input type="radio" name="frame" value="frame_2">
+                        <img src="./images/frame_2.png" alt="Frame 2">
+                    </label>
+                    <label class="frame-option">
+                        <input type="radio" name="frame" value="frame_3">
+                        <img src="./images/frame_3.png" alt="Frame 3">
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit">Submit Information</button>
+        </form>
+
+        <div id="cameraContainer">
+            <h2>Take a Picture</h2>
+            <video id="video" width="1152" height="768" autoplay></video>
+            <button id="captureButton">Capture Image</button>
+            <canvas id="canvas" width="1152" height="768" style="display:none;"></canvas>
+        </div>
+
+        <div id="loadingContainer">
+            <p>Processing your image... Please wait.</p>
+        </div>
+
+        <div id="resultContainer">
+            <h2>Generated Portrait</h2>
+            <img id="generatedImage" alt="Generated Portrait">
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
